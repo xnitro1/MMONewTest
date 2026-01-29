@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0129dcf43157a42a25aeab6dcfe73a, type: 3}
+  m_Name: Default Gameplay Rule
+  m_EditorClassIdentifier: Assembly-CSharp::NightBlade.DefaultGameplayRule
+  increaseStatPointEachLevel: 5
+  increaseSkillPointEachLevel: 1
+  increaseStatPointsUntilReachedLevel: 0
+  increaseSkillPointsUntilReachedLevel: 0
+  expLostPercentageWhenDeath: 2
+  staminaRecoveryPerSeconds: 5
+  staminaDecreasePerSeconds: 5
+  moveSpeedRateWhileOverweight: 0.05
+  moveSpeedRateWhileSprinting: 1.5
+  moveSpeedIncrementWhileSprinting: 0
+  moveSpeedRateWhileWalking: 0.5
+  moveSpeedIncrementWhileWalking: 0
+  moveSpeedRateWhileCrouching: 0.35
+  moveSpeedIncrementWhileCrouching: 0
+  moveSpeedRateWhileCrawling: 0.15
+  moveSpeedIncrementWhileCrawling: 0
+  moveSpeedRateWhileSwimming: 0.5
+  moveSpeedIncrementWhileSwimming: 0
+  hungryWhenFoodLowerThan: 0
+  thirstyWhenWaterLowerThan: 0
+  foodDecreasePerSeconds: 0
+  waterDecreasePerSeconds: 0
+  hpRecoveryRatePerSeconds: 0.05
+  mpRecoveryRatePerSeconds: 0.05
+  hpDecreaseRatePerSecondsWhenHungry: 0
+  mpDecreaseRatePerSecondsWhenHungry: 0
+  hpDecreaseRatePerSecondsWhenThirsty: 0
+  mpDecreaseRatePerSecondsWhenThirsty: 0
+  normalDecreaseWeaponDurability: 0.5
+  normalDecreaseShieldDurability: 0.5
+  normalDecreaseArmorDurability: 0.1
+  blockedDecreaseWeaponDurability: 0.5
+  blockedDecreaseShieldDurability: 0.75
+  blockedDecreaseArmorDurability: 0.15
+  criticalDecreaseWeaponDurability: 0.75
+  criticalDecreaseShieldDurability: 0.5
+  criticalDecreaseArmorDurability: 0.15
+  missDecreaseWeaponDurability: 0
+  missDecreaseShieldDurability: 0
+  missDecreaseArmorDurability: 0
+  alwaysHitWhenCriticalOccurs: 1
+  fallDamageMinDistance: 5
+  fallDamageMaxDistance: 20
+  recoverHpWhenLevelUp: 0
+  recoverMpWhenLevelUp: 0
+  recoverFoodWhenLevelUp: 0
+  recoverWaterWhenLevelUp: 0
+  recoverStaminaWhenLevelUp: 0
+  hpBattlePointScore: 5
+  hpRecoveryBattlePointScore: 2
+  hpLeechRateBattlePointScore: 3
+  mpBattlePointScore: 5
+  mpRecoveryBattlePointScore: 2
+  mpLeechRateBattlePointScore: 3
+  staminaBattlePointScore: 2
+  staminaRecoveryBattlePointScore: 2
+  staminaLeechRateBattlePointScore: 3
+  foodBattlePointScore: 2
+  waterBattlePointScore: 2
+  accuracyBattlePointScore: 10
+  evasionBattlePointScore: 10
+  criRateBattlePointScore: 5
+  criDmgRateBattlePointScore: 5
+  blockRateBattlePointScore: 5
+  blockDmgRateBattlePointScore: 5
+  moveSpeedBattlePointScore: 10
+  atkSpeedBattlePointScore: 10
+  itemDecreaseOnDeadMin: 0
+  itemDecreaseOnDeadMax: 0
+  monsterTitleColorChangeLevel: 5
+  monsterHighLevelTitleColor: {r: 1, g: 0, b: 0, a: 1}
+  monsterLowLevelTitleColor: {r: 0, g: 1, b: 1, a: 1}
+  taxByItemPriceRate: 0.05
+  calculateTaxByStackedItems: 0
+  minLevelToTurnPkOn: 10
+  pkPointEachKills: 10
+  hoursBeforeTurnPkOff: 48
+  pkDatas: []
+  levelingFoldout: 1
+  staminaFoldout: 1
+  movementFoldout: 0
+  survivalFoldout: 1
+  durabilityFoldout: 0
+  combatFoldout: 1
+  progressionFoldout: 1
+  deathFoldout: 1
+  monstersFoldout: 0
+  economyFoldout: 0
+  pkFoldout: 1

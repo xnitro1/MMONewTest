@@ -1,0 +1,26 @@
+using System.Collections.Generic;
+using UnityEditor.Build;
+using UnityEditor.Rendering;
+using UnityEngine;
+
+namespace NightBlade
+{
+    class ShadersStripping : IPreprocessShaders
+    {
+        public int callbackOrder => 0;
+
+        public void OnProcessShader(Shader shader, ShaderSnippetData snippet, IList<ShaderCompilerData> data)
+        {
+#if UNITY_SERVER
+            data.Clear();
+#endif
+        }
+    }
+}
+
+
+
+
+
+
+

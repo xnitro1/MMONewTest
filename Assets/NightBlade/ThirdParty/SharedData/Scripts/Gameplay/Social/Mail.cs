@@ -1,0 +1,130 @@
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using LiteNetLib.Utils;
+using NightBlade.DevExtension;
+
+namespace NightBlade
+{
+    [System.Serializable]
+    public partial class Mail : INetSerializable
+    {
+        public string Id { get; set; }
+        public string EventId { get; set; }
+        public string SenderId { get; set; }
+        public string SenderName { get; set; }
+        public string ReceiverId { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public int Gold { get; set; }
+        public int Cash { get; set; }
+        public List<CharacterCurrency> Currencies { get; } = new List<CharacterCurrency>();
+        public List<CharacterItem> Items { get; } = new List<CharacterItem>();
+        public bool IsRead { get; set; }
+        public long ReadTimestamp { get; set; }
+        public bool IsClaim { get; set; }
+        public long ClaimTimestamp { get; set; }
+        public bool IsDelete { get; set; }
+        public long DeleteTimestamp { get; set; }
+        public long SentTimestamp { get; set; }
+
+		//Support for addons
+		protected ConcurrentDictionary<string, bool> _hasItems = new ConcurrentDictionary<string, bool>();
+        public bool HaveItemsToClaim()
+        {
+			bool hasItems = Gold != 0 || Cash != 0 ||
+                Currencies.Count > 0 || Items.Count > 0;
+
+			if (!hasItems)
+			{
+				_hasItems.Clear();				
+				this.InvokeInstanceDevExtMethods("HaveItemsToClaim", _hasItems);
+				foreach (bool value in _hasItems.Values)
+				{
+					if (value)
+						hasItems = true;
+				}
+			}
+
+			return hasItems;
+        }
+
+        public List<CharacterCurrency> ReadCurrencies(string currenciesString)
+        {
+            Currencies.Clear();
+            Currencies.AddRange(currenciesString.ReadCurrencies());
+            return Currencies;
+        }
+
+        public string WriteCurrencies()
+        {
+            return Currencies.WriteCurrencies();
+        }
+
+        public List<CharacterItem> ReadItems(string itemsString)
+        {
+            Items.Clear();
+            Items.AddRange(itemsString.ReadItems());
+            return Items;
+        }
+
+        public string WriteItems()
+        {
+            return Items.WriteItems();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put(Id);
+            writer.Put(EventId);
+            writer.Put(SenderId);
+            writer.Put(SenderName);
+            writer.Put(ReceiverId);
+            writer.Put(Title);
+            writer.Put(Content);
+            writer.PutPackedInt(Gold);
+            writer.PutPackedInt(Cash);
+            writer.Put(WriteCurrencies());
+            writer.Put(WriteItems());
+            writer.Put(IsRead);
+            writer.PutPackedLong(ReadTimestamp);
+            writer.Put(IsClaim);
+            writer.PutPackedLong(ClaimTimestamp);
+            writer.Put(IsDelete);
+            writer.PutPackedLong(DeleteTimestamp);
+            writer.PutPackedLong(SentTimestamp);
+
+            this.InvokeInstanceDevExtMethods("Serialize", writer);
+        }
+
+        public void Deserialize(NetDataReader reader)
+        {
+            Id = reader.GetString();
+            EventId = reader.GetString();
+            SenderId = reader.GetString();
+            SenderName = reader.GetString();
+            ReceiverId = reader.GetString();
+            Title = reader.GetString();
+            Content = reader.GetString();
+            Gold = reader.GetPackedInt();
+            Cash = reader.GetPackedInt();
+            ReadCurrencies(reader.GetString());
+            ReadItems(reader.GetString());
+            IsRead = reader.GetBool();
+            ReadTimestamp = reader.GetPackedLong();
+            IsClaim = reader.GetBool();
+            ClaimTimestamp = reader.GetPackedLong();
+            IsDelete = reader.GetBool();
+            DeleteTimestamp = reader.GetPackedLong();
+            SentTimestamp = reader.GetPackedLong();
+
+            this.InvokeInstanceDevExtMethods("Deserialize", reader);
+        }
+    }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+using UnityEngine;
+
+namespace NightBlade
+{
+    public class OnClickChangeLanguage : MonoBehaviour
+    {
+        public string languageKey;
+        public void OnClick()
+        {
+            LanguageManager.ChangeLanguage(languageKey);
+            UIBase[] uis = FindObjectsByType<UIBase>(FindObjectsSortMode.None);
+            for (int i = 0; i < uis.Length; ++i)
+            {
+                if (!uis[i].IsVisible())
+                    continue;
+                if (uis[i] is IUISelectionEntry selectionEntry)
+                    selectionEntry.ForceUpdate();
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

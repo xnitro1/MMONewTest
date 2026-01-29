@@ -1,0 +1,206 @@
+using NightBlade.SpatialPartitioningSystems;
+using LiteNetLibManager;
+using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Profiling;
+using UnityEngine;
+
+namespace NightBlade
+{
+    public class JobifiedGridSpatialPartitioningAOI : BaseInterestManager
+    {
+        protected static readonly ProfilerMarker s_UpdateProfilerMarker = new ProfilerMarker("JobifiedGridSpatialPartitioningAOI - Update");
+
+        public float cellSize = 64f;
+        public int maxObjects = 10000;
+        [Tooltip("Update every ? seconds")]
+        public float updateInterval = 1.0f;
+        public Vector3 bufferedCells = Vector3.one;
+        public Color boundsGizmosColor = Color.green;
+
+        private JobifiedGridSpatialPartitioningSystem _system;
+        private float _updateCountDown;
+        private Bounds _bounds;
+        private List<SpatialObject> _spatialObjects = new List<SpatialObject>();
+        private Dictionary<uint, HashSet<uint>> _playerSubscribings = new Dictionary<uint, HashSet<uint>>();
+
+        private void OnDrawGizmosSelected()
+        {
+            Color color = Gizmos.color;
+            Gizmos.color = boundsGizmosColor;
+            Gizmos.DrawWireCube(_bounds.center, _bounds.size);
+            Gizmos.color = color;
+        }
+
+        private void OnDestroy()
+        {
+            _system = null;
+        }
+
+        public override void Setup(LiteNetLibGameManager manager)
+        {
+            base.Setup(manager);
+            manager.Assets.onLoadSceneFinish.RemoveListener(OnLoadSceneFinish);
+            PrepareSystem();
+            manager.Assets.onLoadSceneFinish.AddListener(OnLoadSceneFinish);
+        }
+
+        private void OnLoadSceneFinish(string sceneName, bool isAdditive, bool isOnline, float progress)
+        {
+            if (!IsServer || !isOnline)
+            {
+                _system = null;
+                return;
+            }
+            PrepareSystem();
+        }
+
+        public void PrepareSystem()
+        {
+            if (!IsServer || !Manager.ServerSceneInfo.HasValue)
+            {
+                _system = null;
+                return;
+            }
+            _system = null;
+            var mapBounds = GenericUtils.GetComponentsFromAllLoadedScenes<AOIMapBounds>(true);
+            if (mapBounds.Count > 0)
+            {
+                _bounds = mapBounds[0].bounds;
+                for (int i = 0; i < mapBounds.Count; ++i)
+                {
+                    _bounds.Encapsulate(mapBounds[i].bounds);
+                }
+                _bounds.extents += bufferedCells * cellSize * 2;
+                _system = new JobifiedGridSpatialPartitioningSystem(_bounds, cellSize, maxObjects, false, true, false);
+            }
+            else
+            {
+                var colliders = GenericUtils.GetComponentsFromAllLoadedScenes<Collider>(true);
+                if (colliders.Count > 0)
+                {
+                    _bounds = colliders[0].bounds;
+                    for (int i = 1; i < colliders.Count; ++i)
+                    {
+                        _bounds.Encapsulate(colliders[i].bounds);
+                    }
+                    _bounds.extents += bufferedCells * cellSize * 2;
+                    _system = new JobifiedGridSpatialPartitioningSystem(_bounds, cellSize, maxObjects, false, true, false);
+                }
+            }
+        }
+
+        public override void UpdateInterestManagement(float deltaTime)
+        {
+            if (_system == null)
+                return;
+
+            _updateCountDown -= deltaTime;
+            if (_updateCountDown > 0)
+                return;
+            _updateCountDown = updateInterval;
+
+            using (s_UpdateProfilerMarker.Auto())
+            {
+                _spatialObjects.Clear();
+                foreach (LiteNetLibPlayer player in Manager.GetPlayers())
+                {
+                    if (!player.IsReady)
+                    {
+                        // Don't subscribe if player not ready
+                        continue;
+                    }
+                    foreach (LiteNetLibIdentity playerObject in player.GetSpawnedObjects())
+                    {
+                        _spatialObjects.Add(new SpatialObject()
+                        {
+                            objectId = playerObject.ObjectId,
+                            position = playerObject.transform.position,
+                        });
+                    }
+                }
+                _system.UpdateGrid(_spatialObjects);
+
+                NativeList<SpatialObject> queryResult;
+                HashSet<uint> subscribings;
+                LiteNetLibIdentity foundPlayerObject;
+                foreach (LiteNetLibIdentity spawnedObject in Manager.Assets.GetSpawnedObjects())
+                {
+                    if (spawnedObject == null)
+                        continue;
+                    queryResult = _system.QuerySphere(spawnedObject.transform.position, GetVisibleRange(spawnedObject));
+                    for (int i = 0; i < queryResult.Length; ++i)
+                    {
+                        uint contactedObjectId = queryResult[i].objectId;
+                        if (!Manager.Assets.TryGetSpawnedObject(contactedObjectId, out foundPlayerObject))
+                        {
+                            continue;
+                        }
+                        if (!ShouldSubscribe(foundPlayerObject, spawnedObject, false))
+                        {
+                            continue;
+                        }
+                        if (!_playerSubscribings.TryGetValue(contactedObjectId, out subscribings))
+                            subscribings = new HashSet<uint>();
+                        subscribings.Add(spawnedObject.ObjectId);
+                        _playerSubscribings[contactedObjectId] = subscribings;
+                    }
+                    queryResult.Dispose();
+                }
+
+                foreach (ISpatialObjectComponent component in SpatialObjectContainer.GetValues())
+                {
+                    if (component == null)
+                        continue;
+                    component.ClearSubscribers();
+                    if (!component.SpatialObjectEnabled)
+                        continue;
+                    switch (component.SpatialObjectShape)
+                    {
+                        case SpatialObjectShape.Box:
+                            queryResult = _system.QueryBox(component.SpatialObjectPosition, component.SpatialObjectExtents);
+                            break;
+                        default:
+                            queryResult = _system.QuerySphere(component.SpatialObjectPosition, component.SpatialObjectRadius);
+                            break;
+                    }
+                    for (int i = 0; i < queryResult.Length; ++i)
+                    {
+                        uint contactedObjectId = queryResult[i].objectId;
+                        if (Manager.Assets.TryGetSpawnedObject(contactedObjectId, out foundPlayerObject))
+                            component.AddSubscriber(foundPlayerObject.ObjectId);
+                    }
+                    queryResult.Dispose();
+                }
+
+                foreach (LiteNetLibPlayer player in Manager.GetPlayers())
+                {
+                    if (!player.IsReady)
+                    {
+                        // Don't subscribe if player not ready
+                        continue;
+                    }
+                    foreach (LiteNetLibIdentity playerObject in player.GetSpawnedObjects())
+                    {
+                        if (_playerSubscribings.TryGetValue(playerObject.ObjectId, out subscribings))
+                        {
+                            playerObject.UpdateSubscribings(subscribings);
+                            subscribings.Clear();
+                        }
+                        else
+                        {
+                            playerObject.ClearSubscribings();
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

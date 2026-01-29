@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Unity Projects\\mmoTest\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity projects\\mmotest\\assets\\nightblade\\mmo\\addons\\proceduralgenerationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\nightblade\\mmo\\addons\\proceduralgenerationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity projects\\mmotest\\assets\\nightblade\\mmo\\addons\\dungeonseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\nightblade\\mmo\\addons\\dungeonseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|d:\\unity projects\\mmotest\\assets\\nightblade\\mmo\\addons\\seeddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\nightblade\\mmo\\addons\\seeddisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E88D8800-0B47-F649-1CD7-ABD5840CE8BE}|DunGen.Sample.Basic.csproj|d:\\unity projects\\mmotest\\assets\\dungen\\samples\\basic\\scripts\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E88D8800-0B47-F649-1CD7-ABD5840CE8BE}|DunGen.Sample.Basic.csproj|solutionrelative:assets\\dungen\\samples\\basic\\scripts\\generator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SeedDisplay.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\SeedDisplay.cs",
+              "RelativeDocumentMoniker": "Assets\\NightBlade\\MMO\\Addons\\SeedDisplay.cs",
+              "ToolTip": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\SeedDisplay.cs",
+              "RelativeToolTip": "Assets\\NightBlade\\MMO\\Addons\\SeedDisplay.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T07:21:29.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProceduralGenerationManager.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\ProceduralGenerationManager.cs",
+              "RelativeDocumentMoniker": "Assets\\NightBlade\\MMO\\Addons\\ProceduralGenerationManager.cs",
+              "ToolTip": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\ProceduralGenerationManager.cs",
+              "RelativeToolTip": "Assets\\NightBlade\\MMO\\Addons\\ProceduralGenerationManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T06:58:58.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DungeonSeed.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\DungeonSeed.cs",
+              "RelativeDocumentMoniker": "Assets\\NightBlade\\MMO\\Addons\\DungeonSeed.cs",
+              "ToolTip": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\MMO\\Addons\\DungeonSeed.cs",
+              "RelativeToolTip": "Assets\\NightBlade\\MMO\\Addons\\DungeonSeed.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T08:51:13.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Generator.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\mmoTest\\Assets\\DunGen\\Samples\\Basic\\Scripts\\Generator.cs",
+              "RelativeDocumentMoniker": "Assets\\DunGen\\Samples\\Basic\\Scripts\\Generator.cs",
+              "ToolTip": "D:\\Unity Projects\\mmoTest\\Assets\\DunGen\\Samples\\Basic\\Scripts\\Generator.cs",
+              "RelativeToolTip": "Assets\\DunGen\\Samples\\Basic\\Scripts\\Generator.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAIwIYAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T08:51:56.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DamageableHitBox.cs",
+              "DocumentMoniker": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs",
+              "RelativeDocumentMoniker": "Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs",
+              "ToolTip": "D:\\Unity Projects\\mmoTest\\Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs",
+              "RelativeToolTip": "Assets\\NightBlade\\Core\\Gameplay\\DamageableHitBox.cs",
+              "ViewState": "AgIAAP4AAAAAAAAAAAAkwB8BAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T10:31:05.254Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

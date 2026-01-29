@@ -1,0 +1,71 @@
+# Default to LF for all text files
+* text=auto eol=lf
+
+# Windows-specific files keep CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files - no conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.bmp binary
+*.tga binary
+*.psd binary
+*.tif binary
+*.tiff binary
+*.exr binary
+*.hdr binary
+
+# 3D models
+*.fbx binary
+*.obj binary
+*.blend binary
+*.max binary
+*.ma binary
+*.mb binary
+
+# Audio
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.aiff binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+
+# Unity-specific binary files
+*.unity binary
+*.prefab binary
+*.asset binary
+*.meta binary
+*.mat binary
+*.anim binary
+*.controller binary
+*.overrideController binary
+*.physicMaterial binary
+*.physicsMaterial2D binary
+*.playable binary
+*.mask binary
+*.brush binary
+*.flare binary
+*.fontsettings binary
+*.guiskin binary
+*.giparams binary
+*.renderTexture binary
+*.spriteatlas binary
+*.terrainlayer binary
+*.mixer binary
+*.lighting binary
+
+# Compiled/packaged
+*.dll binary
+*.exe binary
+*.so binary
+*.pdb binary
+
+# Archives
+*.zip binary
+*.unitypackage binary

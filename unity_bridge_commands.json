@@ -1,0 +1,7 @@
+{
+  "command": "Log",
+  "id": "request_console_errors_check",
+  "parameters": {
+    "message": "REQUEST_CONSOLE_DUMP"
+  }
+}

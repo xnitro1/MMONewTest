@@ -1,0 +1,28 @@
+using LiteNetLib.Utils;
+
+namespace NightBlade.MMO
+{
+    public partial struct GetCharacterReq : INetSerializable
+    {
+        public void Deserialize(NetDataReader reader)
+        {
+            UserId = reader.GetString();
+            CharacterId = reader.GetString();
+            ForceClearCache = reader.GetBool();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put(UserId);
+            writer.Put(CharacterId);
+            writer.Put(ForceClearCache);
+        }
+    }
+}
+
+
+
+
+
+
+

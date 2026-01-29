@@ -1,0 +1,19 @@
+using LiteNetLibManager;
+
+namespace NightBlade
+{
+    [System.Serializable]
+    public class AssetReferenceItemsContainerEntity : AssetReferenceLiteNetLibBehaviour<ItemsContainerEntity>
+    {
+        public AssetReferenceItemsContainerEntity(string guid) : base(guid)
+        {
+        }
+    }
+}
+
+
+
+
+
+
+

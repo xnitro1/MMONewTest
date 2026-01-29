@@ -1,0 +1,32 @@
+using LiteNetLib.Utils;
+
+namespace NightBlade.MMO
+{
+    public partial struct GetFriendsReq : INetSerializable
+    {
+        public void Deserialize(NetDataReader reader)
+        {
+            CharacterId = reader.GetString();
+            ReadById2 = reader.GetBool();
+            State = reader.GetByte();
+            Skip = reader.GetPackedInt();
+            Limit = reader.GetPackedInt();
+        }
+
+        public void Serialize(NetDataWriter writer)
+        {
+            writer.Put(CharacterId);
+            writer.Put(ReadById2);
+            writer.Put(State);
+            writer.PutPackedInt(Skip);
+            writer.PutPackedInt(Limit);
+        }
+    }
+}
+
+
+
+
+
+
+

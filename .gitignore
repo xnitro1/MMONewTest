@@ -1,0 +1,139 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pidb
+*.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Crashlytics generated file
+crashlytics-build.properties
+
+# Packed Addressables
+[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+[Aa]ssets/[Ss]treamingAssets/aa.meta
+[Aa]ssets/[Ss]treamingAssets/aa/*
+[Aa]ssets/[Ss]treamingAssets/aa
+
+# Visual Studio / MonoDevelop
+ExportedObj/
+*.svd
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.tmp
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.tmp
+*.unityproj
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node.js (for any tooling)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+
+# Rider
+.idea/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+
+# VS Code
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Package manager
+.pnpm-debug.log*
+
+# Local testing
+TestResults/
+
+# NightBlade specific
+Assets/NightBlade/Custom/
+Assets/StreamingAssets/
+Assets/AddressableAssetsData/*/catalog_*.json
+Assets/AddressableAssetsData/*/settings.json
+
+# Personal AI assistant rules
+.cursorrules
